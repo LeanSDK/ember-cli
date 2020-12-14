@@ -1,0 +1,12 @@
+check-leaks: true
+color: true
+extension:
+  - 'js'
+file:
+  # -
+full-trace: true
+growl: true
+recursive: false
+reporter: 'spec'
+require: 'register-babel.js'
+watch: true

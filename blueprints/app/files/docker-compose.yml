@@ -1,0 +1,109 @@
+version: '3.5'
+services:
+  broccoli:
+    image: node:14.9.0-buster
+    volumes:
+      - ${APP_PATH}:/usr/src/build
+      - ${APP_PATH}/.bash_history:/root/.bash_history
+    entrypoint: npm run watch
+    working_dir: /usr/src/build
+    networks:
+      common:
+        ipv4_address: 192.168.2.4
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: 750m
+  db:
+    image: mongo:4.2.0-bionic
+    container_name: db
+    command: --wiredTigerCacheSizeGB 1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      # <Port exposed> : < Port running inside container>
+      - '27057:27017'
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      common:
+        ipv4_address: 192.168.2.2
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: 750m
+  server:
+    build: .
+    container_name: server
+    environment:
+      APP_PATH: ${APP_PATH}
+      ENV: development
+
+      DB_PROTO: mongodb
+      DB_HOST: 192.168.2.2
+      DB_PORT: 27017
+      DB_NAME: dbName
+      DB_USER: root
+      DB_PASS: password
+
+      ORIGINS: http://192.168.2.3:3001
+      COOKIE_KEY: lWI792OEfxDg2M226OZYZ6Ixz7JAgT8WYbji3VHn0cJLGhiGVSfY2j
+      ITERATIONS: 543 # any random number between 100-10000
+      HASH_DIGEST: sha512
+      TOKEN_ALGORITHM: RS256
+      KEYID: g2M2T27JAgOEfxD8W26OZYZ6IVSfVHn0lWI7xzYbji3LGhiG9cJY2j
+      SECRET: gz2tN3ALtLPzFKnsOOjsK4m8c2cnwG3hGky8F1h3QaYAOmA4ulb5pA
+      ISSUER: http://auth.leanes.com
+
+      AUTO_LOCKING: 'yes'
+      REGISTRATION_IS_ALLOWED: 'yes'
+      PUBLIC_KEY: |
+        -----BEGIN PUBLIC KEY-----
+          MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9shfQ3ZuFxa6OSpg6R6jTafy+
+          aeHkvv+laZWXGd4vUY/9hhXCdtRR+f/Ul0LbUsiv9VGqmpo6NfXKH8mNJjVVp29g
+          gEShWn5b2U3vwnvMWauoKYHqBBCH+PyTasmXP/C4+s7LtY6Wy8sEsO5sKpeIaVcd
+          Y3QhOZivKGDtSv1tIwIDAQAB
+        -----END PUBLIC KEY-----
+      PRIVATE_KEY: |
+        -----BEGIN RSA PRIVATE KEY-----
+          MIICXQIBAAKBgQC9shfQ3ZuFxa6OSpg6R6jTafy+aeHkvv+laZWXGd4vUY/9hhXC
+          dtRR+f/Ul0LbUsiv9VGqmpo6NfXKH8mNJjVVp29ggEShWn5b2U3vwnvMWauoKYHq
+          BBCH+PyTasmXP/C4+s7LtY6Wy8sEsO5sKpeIaVcdY3QhOZivKGDtSv1tIwIDAQAB
+          AoGBALyI9QKyPpCGGSdzHDlQX4tAG+NkeQ9QheVxOywimaGN/v6K9bWBRST0xEAW
+          1mwFq1C3EaPuZLrWRqPNVBTllLsD2XRJZshKw7ZIXChgD5781kWswCGx1RFcGkji
+          ixRdd1bj2gUUlJHn+HaHSo9btsASM6jfHcVjno7WZn1xlV2BAkEA95bREVMbkAKp
+          h/DAZ9t5BMyK/KRk1cmBZ9AB37MxOnDZ9sarZX6z2ztb5NILMiNI3P8xUJo5zr8I
+          G95+X0LIjwJBAMQjzNwQ9TcJToliRpKv7Kf7t1q/Z644LCrA5E+VdaVd9aw+C6Ek
+          7VRBD3zPYgPP4vK0IRLjUZ9n0rvPArqbFC0CQQCvjos0I5/Zn2micL2dZuwK0RaE
+          SfUN+lH90GpjumXfsIF9ECYcU5kojJB+UcmKhaZ2vaS0KIdw59fSGxO0bGBVAkBg
+          Tj/BcmYk7uHsHSAP2Ge4F6Vw3niXF6fAGlRAK1/HoboGJ7ToG8yYSRXEr8Mtof6K
+          Mx3mO02RmpXjd4Kcg5bFAkAiiHDMSHuMSZF9OIWOx8mgAUsiGLfUwXIN42kov1Zl
+          JDu35MivTuwRU7lXLCvCPWAJ0JeVUj+s6z+k0ZI4dqA5
+        -----END RSA PRIVATE KEY-----
+    volumes:
+      - ${APP_PATH}:/usr/src/app
+      - ${APP_PATH}/.bash_history:/root/.bash_history
+    ports:
+      - '3001:3001'
+      - '9222:9222'
+      - '9229:9229'
+    working_dir: /usr/src/app
+    networks:
+      common:
+        ipv4_address: 192.168.2.3
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: 750m
+networks:
+  common:
+    external:
+      name: common
+volumes:
+  mongodb-data:
+    external:
+      name: mongodb-data

@@ -1,30 +1,27 @@
 {
-  "name": "ember-cli",
+  "name": "leanes-cli",
   "version": "3.23.0-beta.2",
-  "description": "Command line tool for developing ambitious ember.js apps",
+  "description": "Command line tool for developing graceful LeanES apps",
   "keywords": [
     "app",
     "app-kit",
-    "blockchain",
     "cli",
-    "ember",
-    "ember-app-kit",
-    "ember.js",
-    "kit"
+    "LeanES",
+    "leanes-app"
   ],
-  "homepage": "https://ember-cli.com/",
+  "homepage": "https://leanes-cli.com/",
   "bugs": {
-    "url": "https://github.com/ember-cli/ember-cli/issues"
+    "url": "https://github.com/LeanSDK/leanes-cli/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ember-cli/ember-cli.git"
+    "url": "https://github.com/LeanSDK/leanes-cli.git"
   },
   "license": "MIT",
-  "author": "Stefan Penner, Robert Jackson and ember-cli contributors",
+  "author": "Stefan Penner, Robert Jackson and contributors",
   "main": "lib/cli/index.js",
   "bin": {
-    "ember": "./bin/ember"
+    "leanes": "./bin/leanes"
   },
   "scripts": {
     "docs": "yuidoc",
@@ -184,6 +181,5 @@
       "release": true,
       "tokenRef": "GITHUB_AUTH"
     }
-  },
-  "trackingCode": "UA-49225444-1"
+  }
 }

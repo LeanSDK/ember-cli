@@ -1,0 +1,38 @@
+version: '3.5'
+services:
+  broccoli:
+    image: node:14.9.0-buster
+    volumes:
+      - ${APP_PATH}:/usr/src/build
+      - ${APP_PATH}/.bash_history:/root/.bash_history
+    entrypoint: npm run watch
+    working_dir: /usr/src/build
+    networks:
+      - common
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: 750m
+  app:
+    build: .
+    container_name: app
+    stdin_open: true
+    environment:
+      APP_PATH: ${APP_PATH}
+      ENV: development
+    volumes:
+      - ${APP_PATH}:/usr/src/app
+      - ${APP_PATH}/.bash_history:/root/.bash_history
+    working_dir: /usr/src/app
+    networks:
+      - common
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: 750m
+networks:
+  common:
+    external:
+      name: common

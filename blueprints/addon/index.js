@@ -9,7 +9,7 @@ const uniq = require('ember-cli-lodash-subset').uniq;
 const SilentError = require('silent-error');
 const sortPackageJson = require('sort-package-json');
 
-let date = new Date();
+const date = new Date();
 
 const normalizeEntityName = require('ember-cli-normalize-entity-name');
 const stringifyAndNormalize = require('../../lib/utilities/stringify-and-normalize');
@@ -21,7 +21,7 @@ const replacers = {
   },
 };
 
-const ADDITIONAL_DEV_DEPENDENCIES = require('./additional-dev-dependencies.json').devDependencies;
+// const ADDITIONAL_DEV_DEPENDENCIES = require('./additional-dev-dependencies.json').devDependencies;
 
 const description = 'The default blueprint for ember-cli addons.';
 module.exports = {
@@ -29,12 +29,11 @@ module.exports = {
   appBlueprintName: 'app',
 
   filesToRemove: [
-    'tests/dummy/app/styles/.gitkeep',
-    'tests/dummy/app/templates/.gitkeep',
-    'tests/dummy/app/views/.gitkeep',
-    'tests/dummy/public/.gitkeep',
-    'Brocfile.js',
-    'testem.json',
+    // 'tests/dummy/app/styles/.gitkeep',
+    // 'tests/dummy/app/templates/.gitkeep',
+    // 'tests/dummy/app/views/.gitkeep',
+    // 'tests/dummy/public/.gitkeep',
+    // 'Brocfile.js',
   ],
 
   updatePackageJson(content) {
@@ -73,7 +72,7 @@ module.exports = {
       contents.keywords.push('ember-addon');
     }
 
-    Object.assign(contents.devDependencies, ADDITIONAL_DEV_DEPENDENCIES);
+    // Object.assign(contents.devDependencies, ADDITIONAL_DEV_DEPENDENCIES);
 
     // add `ember-compatibility` script in addons
     contents.scripts['test:ember-compatibility'] = 'ember try:each';
@@ -150,13 +149,11 @@ module.exports = {
       namespace,
       addonName,
       addonNamespace,
-      emberCLIVersion: require('../../package').version,
       year: date.getFullYear(),
       yarn: options.yarn,
       welcome: options.welcome,
       blueprint: 'addon',
       blueprintOptions,
-      embroider: false,
       lang: options.lang,
     };
   },

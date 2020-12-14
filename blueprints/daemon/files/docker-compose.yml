@@ -1,0 +1,72 @@
+version: '3.5'
+services:
+  broccoli:
+    image: node:14.9.0-buster
+    volumes:
+      - ${APP_PATH}:/usr/src/build
+      - ${APP_PATH}/.bash_history:/root/.bash_history
+    entrypoint: npm run watch
+    working_dir: /usr/src/build
+    networks:
+      common:
+        ipv4_address: 192.168.2.4
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: 750m
+  db:
+    image: mongo:4.2.0-bionic
+    container_name: mongodb
+    command: --wiredTigerCacheSizeGB 1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      # <Port exposed> : < Port running inside container>
+      - '27057:27017'
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      common:
+        ipv4_address: 192.168.2.2
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: 750m
+  daemon:
+    build: .
+    container_name: daemon
+    environment:
+      APP_PATH: ${APP_PATH}
+      ENV: development
+
+      DB_PROTO: mongodb
+      DB_HOST: 192.168.2.2
+      DB_PORT: 27017
+      DB_NAME: dbName
+      DB_USER: root
+      DB_PASS: password
+
+      FETCH_URL: https://www.google.com/
+    volumes:
+      - ${APP_PATH}:/usr/src/app
+      - ${APP_PATH}/.bash_history:/root/.bash_history
+    working_dir: /usr/src/app
+    networks:
+      common:
+        ipv4_address: 192.168.2.3
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "2"
+        max-size: 750m
+networks:
+  common:
+    external:
+      name: common
+volumes:
+  mongodb-data:
+    external:
+      name: mongodb-data

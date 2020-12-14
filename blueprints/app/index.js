@@ -5,15 +5,14 @@ const chalk = require('chalk');
 const { isExperimentEnabled } = require('../../lib/experiments');
 
 module.exports = {
-  description: 'The default blueprint for ember-cli projects.',
+  description: 'The default blueprint for leanes-cli projects.',
 
   filesToRemove: [
-    'app/styles/.gitkeep',
-    'app/templates/.gitkeep',
-    'app/views/.gitkeep',
-    'public/.gitkeep',
-    'Brocfile.js',
-    'testem.json',
+    // 'app/styles/.gitkeep',
+    // 'app/templates/.gitkeep',
+    // 'app/views/.gitkeep',
+    // 'public/.gitkeep',
+    // 'Brocfile.js',
   ],
 
   locals(options) {
@@ -38,12 +37,10 @@ module.exports = {
       name,
       modulePrefix: name,
       namespace,
-      emberCLIVersion: require('../../package').version,
       yarn: options.yarn,
       welcome: options.welcome,
       blueprint: 'app',
       blueprintOptions,
-      embroider: isExperimentEnabled('EMBROIDER'),
       lang: options.lang,
     };
   },
@@ -52,8 +49,8 @@ module.exports = {
     const version = require('../../package.json').version;
     const prependEmoji = require('../../lib/utilities/prepend-emoji');
 
-    this.ui.writeLine(chalk.blue(`Ember CLI v${version}`));
+    this.ui.writeLine(chalk.blue(`LeanES CLI v${version}`));
     this.ui.writeLine('');
-    this.ui.writeLine(prependEmoji('✨', `Creating a new Ember app in ${chalk.yellow(process.cwd())}:`));
+    this.ui.writeLine(prependEmoji('✨', `Creating a new LeanES app in ${chalk.yellow(process.cwd())}:`));
   },
 };
