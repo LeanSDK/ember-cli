@@ -6,7 +6,7 @@ const stringUtil = require('ember-cli-string-utils');
 const stringifyAndNormalize = require('../../lib/utilities/stringify-and-normalize');
 
 module.exports = {
-  description: 'The blueprint for addon in repo ember-cli addons.',
+  description: 'The blueprint for addon in repo leanes-cli addons.',
 
   beforeInstall(options) {
     let { root } = this._processTokens(options.entity.name);
@@ -57,20 +57,20 @@ module.exports = {
     let newPath = [root, name].join('/');
     let paths;
 
-    contents['ember-addon'] = contents['ember-addon'] || {};
-    paths = contents['ember-addon']['paths'] = contents['ember-addon']['paths'] || [];
+    contents['leanes-addon'] = contents['leanes-addon'] || {};
+    paths = contents['leanes-addon']['paths'] = contents['leanes-addon']['paths'] || [];
 
     if (isInstall) {
       if (paths.indexOf(newPath) === -1) {
         paths.push(newPath);
-        contents['ember-addon']['paths'] = paths.sort();
+        contents['leanes-addon']['paths'] = paths.sort();
       }
     } else {
       let newPathIndex = paths.indexOf(newPath);
       if (newPathIndex > -1) {
         paths.splice(newPathIndex, 1);
         if (paths.length === 0) {
-          delete contents['ember-addon']['paths'];
+          delete contents['leanes-addon']['paths'];
         }
       }
     }

@@ -23,7 +23,7 @@ const replacers = {
 
 // const ADDITIONAL_DEV_DEPENDENCIES = require('./additional-dev-dependencies.json').devDependencies;
 
-const description = 'The default blueprint for ember-cli addons.';
+const description = 'The default blueprint for leanes-cli addons.';
 module.exports = {
   description,
   appBlueprintName: 'app',
@@ -47,38 +47,17 @@ module.exports = {
     contents.dependencies = contents.dependencies || {};
     contents.devDependencies = contents.devDependencies || {};
 
-    // npm doesn't like it when we have something in both deps and devDeps
-    // and dummy app still uses it when in deps
-    contents.dependencies['ember-cli-babel'] = contents.devDependencies['ember-cli-babel'];
-    delete contents.devDependencies['ember-cli-babel'];
-
-    // Move ember-cli-htmlbars into the dependencies of the addon blueprint by default
-    // to prevent error:
-    // `Addon templates were detected but there are no template compilers registered for (addon-name)`
-    contents.dependencies['ember-cli-htmlbars'] = contents.devDependencies['ember-cli-htmlbars'];
-    delete contents.devDependencies['ember-cli-htmlbars'];
-
-    // 95% of addons don't need ember-data or ember-fetch, make them opt-in instead
-    delete contents.devDependencies['ember-data'];
-    delete contents.devDependencies['ember-fetch'];
-
-    // 100% of addons don't need ember-cli-app-version, make it opt-in instead
-    delete contents.devDependencies['ember-cli-app-version'];
-
-    // addons should test _without_ jquery by default
-    delete contents.devDependencies['@ember/jquery'];
-
-    if (contents.keywords.indexOf('ember-addon') === -1) {
-      contents.keywords.push('ember-addon');
+    if (contents.keywords.indexOf('leanes-addon') === -1) {
+      contents.keywords.push('leanes-addon');
     }
 
     // Object.assign(contents.devDependencies, ADDITIONAL_DEV_DEPENDENCIES);
 
-    // add `ember-compatibility` script in addons
-    contents.scripts['test:ember-compatibility'] = 'ember try:each';
+    // add `leanes-compatibility` script in addons
+    contents.scripts['test:leanes-compatibility'] = 'leanes try:each';
 
-    contents['ember-addon'] = contents['ember-addon'] || {};
-    contents['ember-addon'].configPath = 'tests/dummy/config';
+    contents['leanes-addon'] = contents['leanes-addon'] || {};
+    contents['leanes-addon'].configPath = 'tests/dummy/config';
 
     return stringifyAndNormalize(sortPackageJson(contents));
   },
@@ -106,9 +85,9 @@ module.exports = {
     const version = require('../../package.json').version;
     const prependEmoji = require('../../lib/utilities/prepend-emoji');
 
-    this.ui.writeLine(chalk.blue(`Ember CLI v${version}`));
+    this.ui.writeLine(chalk.blue(`LeanES CLI v${version}`));
     this.ui.writeLine('');
-    this.ui.writeLine(prependEmoji('✨', `Creating a new Ember addon in ${chalk.yellow(process.cwd())}:`));
+    this.ui.writeLine(prependEmoji('✨', `Creating a new LeanES addon in ${chalk.yellow(process.cwd())}:`));
   },
 
   afterInstall() {
@@ -196,8 +175,8 @@ module.exports = {
   normalizeEntityName(entityName) {
     entityName = normalizeEntityName(entityName);
 
-    if (this.project.isEmberCLIProject() && !this.project.isEmberCLIAddon()) {
-      throw new SilentError('Generating an addon in an existing ember-cli project is not supported.');
+    if (this.project.isLeanesCLIProject() && !this.project.isLeanesCLIAddon()) {
+      throw new SilentError('Generating an addon in an existing leanes-cli project is not supported.');
     }
 
     return entityName;

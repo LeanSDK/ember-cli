@@ -2,7 +2,7 @@
 
 There are many ways to contribute to the project, you can fix issues,
 improve documentation or work on any of the features on the
-[wish list](https://github.com/ember-cli/ember-cli/wiki/Wish-List).
+[wish list](https://github.com/LeanSDK/leanes-cli/wiki/Wish-List).
 
 
 # Development
@@ -10,24 +10,24 @@ improve documentation or work on any of the features on the
 Start by cloning the Git project to your local hard drive:
 
 ```
-git clone https://github.com/ember-cli/ember-cli.git
+git clone https://github.com/LeanSDK/leanes-cli.git
 ```
 
-## Link `ember` to your development version
+## Link `leanes` to your development version
 
-If you want to use the `ember` or `ember-cli` development versions you are working on, run the following command to link the global `ember` utility to your local development version:
+If you want to use the `leanes` or `leanes-cli` development versions you are working on, run the following command to link the global `leanes` utility to your local development version:
 
 ```
 npm link
 ```
 
-Note that the global `ember` CLI utility will automatically relay to any
-project-local ember-cli installation. If you want to use your development
-version there instead run the following command from your Ember.js
+Note that the global `leanes` CLI utility will automatically relay to any
+project-local leanes-cli installation. If you want to use your development
+version there instead run the following command from your LeanES
 project folder:
 
 ```
-npm link ember-cli
+npm link leanes-cli
 ```
 
 Read the official [npm-link documentation](https://docs.npmjs.com/cli/link.html)
@@ -44,7 +44,7 @@ will run ESLint and the "fast" subset of the test suite. Run
 `npm run test:all` for the full test suite which will currently take quite a
 few minutes due to heavy IO and network usage.
 
-ember-cli is using [Mocha](https://mochajs.org/) for its internal tests. If
+leanes-cli is using [Mocha](https://mochajs.org/) for its internal tests. If
 you want to run a specific subset of tests have a look at their
 [documentation](https://mochajs.org/#exclusive-tests).
 
@@ -56,10 +56,10 @@ it in `docs/build/`. Please help by improving this documentation.
 
 # Questions
 
-This is the issue tracker for `ember-cli`. The community uses this site
+This is the issue tracker for `leanes-cli`. The community uses this site
 to collect and track bugs and discussions of new features. If you are
-having difficulties using `ember-cli` or have a question about usage
-please ask a question on Stack Overflow: https://stackoverflow.com/questions/ask?tags=ember-cli
+having difficulties using `leanes-cli` or have a question about usage
+please ask a question on Stack Overflow: https://stackoverflow.com/questions/ask?tags=leanes-cli
 
 # Issues
 
@@ -67,7 +67,7 @@ Think you've found a bug or have a new feature to suggest? Let us know!
 
 ## Slow builds?
 
-Please be sure to review [The Perf Guide](https://github.com/ember-cli/ember-cli/blob/master/docs/perf-guide.md) (and implement its recommendations) before posting an issue.
+Please be sure to review [The Perf Guide](https://github.com/LeanSDK/leanes-cli/blob/master/docs/perf-guide.md) (and implement its recommendations) before posting an issue.
 
 ## Reporting a Bug
 
@@ -82,10 +82,10 @@ Please be sure to review [The Perf Guide](https://github.com/ember-cli/ember-cli
    pared down, the better. Issues with demos are prioritized.
 
 4. Your issue will be verified. The provided demo will be tested for
-   correctness. The ember-cli team will work with you until your issue can be
+   correctness. The leanes-cli team will work with you until your issue can be
    verified.
 
-5. Keep up to date with feedback from the ember-cli team on your ticket. Your
+5. Keep up to date with feedback from the leanes-cli team on your ticket. Your
    ticket may be closed if it becomes stale.
 
 6. If possible, submit a Pull Request with a failing test. Better yet, take
@@ -98,7 +98,7 @@ Be sure to include (At the very least):
 
 * OS
 * npm version
-* ember version
+* LeanES version
 * clear steps to reproduction
 
 And ideally
@@ -107,7 +107,7 @@ And ideally
 
 ## Requesting a Feature
 
-Feature requests are handled via https://github.com/ember-cli/rfcs
+Feature requests are handled via https://github.com/LeanSDK/leanes
 
 * issues are eargley stage requests/proposals
 * rfcs as pull requests are for fleshing out details
@@ -120,7 +120,7 @@ Feature requests are handled via https://github.com/ember-cli/rfcs
    important to add. Keep in mind that we want features that will be useful to
    the majority of our users and not just a small subset. If you're just
    targeting a minority of users, consider writing an addon library for
-   `ember-cli`.
+   `leanes-cli`.
 
 3. If the feature is complex, consider writing some initial documentation for
    it. If we do end up accepting the feature it will need to be documented and
@@ -176,7 +176,7 @@ We love pull requests. Here's a quick guide:
    before any other tags (example [BREAKING BUGFIX]).
 
 We try to be quick about responding to tickets but sometimes we get a bit
-backlogged. If the response is slow, try to find someone on IRC(#ember-cli) to
+backlogged. If the response is slow, try to find someone on IRC(#leanes-cli) to
 give the ticket a review.
 
 Some things that will increase the chance that your pull request is accepted,
@@ -210,8 +210,8 @@ updating or writing new documentation:
 
 #### Website
 
-The codebase for the website [ember-cli.com](https://ember-cli.com) is located
-at: https://github.com/ember-cli/ember-cli.github.io
+The codebase for the website [leanes-cli.com](https://leanes-cli.com) is located
+at: https://github.com/LeanSDK/LeanSDK.github.io
 
 #### Code Words
 
@@ -239,24 +239,3 @@ describe.only("My new feature", function() {
 Then simply run `npm test` for your test to run. If the test(s) pass and you are happy with the
 result, remove the `.only` and run the whole suite again, in order to make sure that you didn't
 break anything.
-
-NOTE: Partially copied from https://raw.githubusercontent.com/emberjs/ember.js/master/CONTRIBUTING.md
-
-#### Experiments
-
-A new feature may require putting the changes behind an experiment. More
-information can be found at
-[Experiments](https://github.com/ember-cli/ember-cli/blob/master/docs/experiments.md).
-
-# Code Climate
-
-We can always use help improving our [Code Climate](https://codeclimate.com/github/ember-cli/ember-cli) score.
-
-# Docs
-
-Have you got enough knowledge in a specific feature and want to help with docs?
-Ember-cli documentation lives at the repository
-[ember-learn/cli-guides](https://github.com/ember-learn/cli-guides).
-
-Feel free to contribute and help us to keep an updated, clear and complete
-documentation.

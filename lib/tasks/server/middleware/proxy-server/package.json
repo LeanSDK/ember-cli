@@ -1,7 +1,7 @@
 {
   "name": "proxy-server-middleware",
   "keywords": [
-    "ember-addon"
+    "leanes-addon"
   ],
   "dependencies": {
     "http-proxy": "*",

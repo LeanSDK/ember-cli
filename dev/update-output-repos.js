@@ -7,14 +7,14 @@ const tmp = require('tmp');
 tmp.setGracefulCleanup();
 
 const currentVersion = require('../package').version;
-const EMBER_PATH = require.resolve('../bin/ember');
+const LEANES_PATH = require.resolve('../bin/leanes');
 const isStable = !currentVersion.includes('-beta');
 
 let tmpdir = tmp.dirSync();
 
 async function updateRepo(repoName) {
-  let command = repoName === 'ember-new-output' ? 'new' : 'addon';
-  let name = repoName === 'ember-new-output' ? 'my-app' : 'my-addon';
+  let command = repoName === 'leanes-new-output' ? 'new' : 'addon';
+  let name = repoName === 'leanes-new-output' ? 'my-app' : 'my-addon';
   let outputRepoPath = path.join(tmpdir.name, repoName);
 
   let outputRepoBranch = isStable ? 'stable' : 'master';
@@ -22,7 +22,7 @@ async function updateRepo(repoName) {
   let branchToClone = shouldUpdateMasterFromStable ? 'stable' : outputRepoBranch;
 
   console.log(`cloning ${repoName}`);
-  await execa('git', ['clone', `git@github.com:ember-cli/${repoName}.git`, `--branch=${branchToClone}`], {
+  await execa('git', ['clone', `git@github.com:LeanSDK/${repoName}.git`, `--branch=${branchToClone}`], {
     cwd: tmpdir.name,
   });
 
@@ -32,8 +32,8 @@ async function updateRepo(repoName) {
   });
 
   let updatedOutputTmpDir = tmp.dirSync();
-  console.log(`Running ember ${command} ${name}`);
-  await execa(EMBER_PATH, [command, name, `--skip-bower`, `--skip-npm`, `--skip-git`], {
+  console.log(`Running leanes ${command} ${name}`);
+  await execa(LEANES_PATH, [command, name, `--skip-bower`, `--skip-npm`, `--skip-git`], {
     cwd: updatedOutputTmpDir.name,
   });
 
@@ -58,8 +58,8 @@ async function updateRepo(repoName) {
 
 async function main() {
   try {
-    await updateRepo('ember-new-output');
-    await updateRepo('ember-addon-output');
+    await updateRepo('leanes-new-output');
+    await updateRepo('leanes-addon-output');
   } catch (error) {
     console.log(error);
   }

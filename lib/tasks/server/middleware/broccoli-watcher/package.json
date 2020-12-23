@@ -1,9 +1,9 @@
 {
   "name": "broccoli-watcher",
   "keywords": [
-    "ember-addon"
+    "leanes-addon"
   ],
-  "ember-addon": {},
+  "leanes-addon": {},
   "dependencies": {
     "clean-base-url": "*",
     "heimdalljs-logger": "*",

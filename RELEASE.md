@@ -1,7 +1,7 @@
 # Release Process
 
 
-ember-cli follows the same channel based release process that Ember does:
+leanes-cli follows the same channel based release process that LeanES does:
 
 * `release` - This branch represents the `latest` dist-tag on NPM
 * `beta` - This branch represents the `beta` dist-tag on NPM

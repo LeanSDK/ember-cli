@@ -1,9 +1,9 @@
 {
   "name": "amd-transform",
   "keywords": [
-    "ember-addon"
+    "leanes-addon"
   ],
-  "ember-addon": {},
+  "leanes-addon": {},
   "dependencies": {
     "broccoli-stew": "*"
   }

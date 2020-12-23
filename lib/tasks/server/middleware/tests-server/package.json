@@ -1,9 +1,9 @@
 {
   "name": "tests-server-middleware",
   "keywords": [
-    "ember-addon"
+    "leanes-addon"
   ],
-  "ember-addon": {
+  "leanes-addon": {
     "before": "history-support-middleware"
   },
   "dependencies": {

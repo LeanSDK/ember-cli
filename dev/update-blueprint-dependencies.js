@@ -5,13 +5,9 @@ function usage() {
 
 Options:
 
-  - '--ember-source' (required) - The dist-tag to use for ember-source
-  - '--ember-data' (required) - The dist-tag to use for ember-data
   - '--filter' (optional) - A RegExp to filter the packages to update by
 
 Example:
-
-node dev/update-blueprint-dependencies.js --ember-source=beta --ember-data=beta
 
 node dev/update-blueprint-dependencies.js --filter eslint
 `);
@@ -32,8 +28,6 @@ nopt.typeDefs['regexp'] = {
 };
 
 const OPTIONS = nopt({
-  'ember-source': String,
-  'ember-data': String,
   filter: RegExp,
 });
 
@@ -92,7 +86,6 @@ async function updateDependencies(dependencies) {
     // handle things from blueprints/app/files/package.json like `^2.4.0<% if (welcome) { %>`
     let templateSuffix = previousValue.includes('<') ? previousValue.slice(previousValue.indexOf('<')) : '';
 
-    // check if we are dealing with `~<%= emberCLIVersion %>`
     let hasVersion = previousValue[1] !== '<';
 
     if (hasVersion && isValidPrefix) {
@@ -127,7 +120,7 @@ if (module === require.main) {
     process.exit(1);
   });
 
-  if (OPTIONS.filter || (OPTIONS['ember-source'] && OPTIONS['ember-data'])) {
+  if (OPTIONS.filter) {
     main();
   } else {
     usage();

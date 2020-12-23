@@ -5,7 +5,7 @@ RUN npm i -g phantomjs-prebuilt
 
 RUN apt-get update && apt-get install -y git
 
-RUN git clone https://github.com/ember-cli/ember-cli.git ~/ember-cli
-RUN cd ~/ember-cli && npm i
+RUN git clone https://github.com/LeanSDK/leanes-cli.git ~/leanes-cli
+RUN cd ~/leanes-cli && npm i
 
 ENTRYPOINT ["/bin/bash"]

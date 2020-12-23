@@ -46,8 +46,8 @@ function generateChangelog(contributions) {
 
 #### Blueprint Changes
 
-- [\`ember new\` diff](https://github.com/ember-cli/ember-new-output/compare/${currentVersion}...${nextVersion})
-- [\`ember addon\` diff](https://github.com/ember-cli/ember-addon-output/compare/${currentVersion}...${nextVersion})
+- [\`leanes new\` diff](https://github.com/LeanSDK/leanes-new-output/compare/${currentVersion}...${nextVersion})
+- [\`leanes addon\` diff](https://github.com/LeanSDK/leanes-addon-output/compare/${currentVersion}...${nextVersion})
 
 #### Changelog
 
@@ -133,8 +133,8 @@ async function main() {
 
   github.repos
     .compareCommits({
-      owner: 'ember-cli',
-      repo: 'ember-cli',
+      owner: 'LeanSDK',
+      repo: 'leanes-cli',
       base: currentVersion,
       head: branch,
     })
@@ -143,8 +143,8 @@ async function main() {
       for (let entry of contributions) {
         if (entry.number) {
           let prInfo = await github.pulls.get({
-            owner: 'ember-cli',
-            repo: 'ember-cli',
+            owner: 'LeanSDK',
+            repo: 'leanes-cli',
             // eslint-disable-next-line
           pull_number: entry.number
           });
@@ -164,7 +164,7 @@ async function main() {
         .map(pr => {
           let link;
           if (pr.number) {
-            link = `[#${pr.number}](https://github.com/ember-cli/ember-cli/pull/${pr.number})`;
+            link = `[#${pr.number}](https://github.com/LeanSDK/leanes-cli/pull/${pr.number})`;
           } else {
             link = `[${pr.commitInfo.sha}](${pr.commitInfo.html_url})`;
           }
