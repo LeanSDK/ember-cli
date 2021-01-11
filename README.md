@@ -7,7 +7,6 @@ leanes-cli
 [![Test Coverage][coveralls-badge]][coveralls-badge-url]
 [![Code Climate][codeclimate-badge]][codeclimate-badge-url]
 
-[logo]: https://avatars0.githubusercontent.com/u/10262982?v=3&s=150
 [npm-badge]: https://img.shields.io/npm/v/leanes-cli.svg
 [npm-badge-url]: https://www.npmjs.com/package/leanes-cli
 [coveralls-badge]: https://img.shields.io/coveralls/LeanSDK/leanes-cli/master.svg

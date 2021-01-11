@@ -1,5 +1,5 @@
 {
-  "name": "leanes-cli",
+  "name": "@leansdk/leanes-cli",
   "version": "7.0.0",
   "description": "Command line tool for developing graceful LeanES apps",
   "keywords": [
