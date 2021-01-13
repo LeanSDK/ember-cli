@@ -27,7 +27,7 @@
     "leanes-addon"
   ],
   "devDependencies": {
-    "@leansdk/leanes": "https://github.com/LeanSDK/leanes.git#feature/application_module_improvements",
+    "@leansdk/leanes": "^7.0.0",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",

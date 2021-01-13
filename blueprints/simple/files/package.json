@@ -62,9 +62,9 @@
     "source-map-support": "^0.5.19"
   },
   "dependencies": {
-    "@leansdk/leanes": "https://github.com/LeanSDK/leanes.git#feature/application_module_improvements",
-    "@leansdk/leanes-fs-utils-addon": "https://github.com/LeanSDK/leanes-fs-utils-addon.git#develop",
-    "@leansdk/leanes-configurable-addon": "https://github.com/LeanSDK/leanes-configurable-addon.git#develop",
+    "@leansdk/leanes": "^7.0.0",
+    "@leansdk/leanes-fs-utils-addon": "^7.0.0",
+    "@leansdk/leanes-configurable-addon": "^7.0.0",
     "cron": "1.8.2",
     "nodemon": "1.19.4",
     "pm2": "^3.5.1"
